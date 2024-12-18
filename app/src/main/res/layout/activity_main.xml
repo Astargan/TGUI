@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/toolbar_background"
+        android:elevation="8dp"
+        android:titleTextColor="@android:color/white"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:contentDescription="@string/toolbar_description"
+        android:title="TranslitGUI"
+        app:showAsAction="ifRoom" />
+
+    <!-- Приветственный экран -->
+    <LinearLayout
+        android:id="@+id/splashScreen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/splashText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="TranslitGUI"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+        <!-- Прогресс-бар или анимация загрузки -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:layout_marginTop="30dp"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <!-- Основной экран, который будет показан после приветственного экрана -->
+    <LinearLayout
+        android:id="@+id/mainContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:padding="16dp">
+
+        <!-- Элементы интерфейса для основного экрана (вы уже добавили их ранее) -->
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:textSize="19dp"
+            android:hint="Введите текст для транслитерации"
+            android:background="@drawable/edittext_background"
+            android:importantForAccessibility="yes"
+            android:padding="16dp" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="227dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="32dp"
+            android:minHeight="48dp"
+            android:importantForAccessibility="yes"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="104dp"
+            android:layout_marginTop="12dp"
+            android:text="Транслитерировать"
+            android:importantForAccessibility="yes"/>
+
+        <TextView
+            android:id="@+id/resultTextView"
+            android:layout_width="match_parent"
+            android:layout_height="135dp"
+            android:layout_marginTop="37dp"
+            android:scrollbars="vertical"
+            android:text="Текст на транслите будет отображён здесь"
+            android:textIsSelectable="true"
+            android:textSize="19dp"
+            android:importantForAccessibility="yes"/>
+
+
+    </LinearLayout>
+
+</FrameLayout>
