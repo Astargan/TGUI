@@ -12,4 +12,9 @@
     <color name="textColorSecondary">#757575</color> <!-- Вторичный цвет текста -->
     <color name="grey">#B0B0B0</color> <!-- Серый для текста во тёмной теме -->
     <color name="white">#FFFFFF</color> <!-- Белый цвет для текста во тёмной теме -->
+    <color name="primaryColor">#6200EE</color>
+    <color name="primaryDarkColor">#3700B3</color>
+    <color name="dark_yellow">#FFD700</color>
+    <color name="colorAccent">#f2f0e3</color> <!-- три точки -->
+
 </resources>

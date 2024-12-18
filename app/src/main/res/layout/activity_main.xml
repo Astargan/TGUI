@@ -10,21 +10,17 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/toolbar_background"
-        android:elevation="8dp"
-        android:titleTextColor="@android:color/white"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:contentDescription="@string/toolbar_description"
-        android:title="TranslitGUI"
-        app:showAsAction="ifRoom" />
+        android:background="#660000"
+        android:elevation="4dp"
+        app:showAsAction="ifRoom"
+        app:menu="@menu/menu_main" />
 
     <!-- Приветственный экран -->
     <LinearLayout
         android:id="@+id/splashScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
+        android:background="#B39543"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -33,8 +29,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="TranslitGUI"
-            android:textSize="35sp"
+            android:text="translitgui"
+            android:textColor="#f2f0e3"
+            android:textSize="45sp"
+            android:fontFamily="@font/argadu"
             android:textStyle="bold" />
 
         <!-- Прогресс-бар или анимация загрузки -->
@@ -53,8 +51,9 @@
         android:id="@+id/mainContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#EDE6A3"
         android:orientation="vertical"
-        android:visibility="gone"
+        android:visibility="visible"
         android:padding="16dp">
 
         <!-- Элементы интерфейса для основного экрана (вы уже добавили их ранее) -->
@@ -64,7 +63,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="200dp"
             android:textSize="19dp"
-            android:hint="Введите текст для транслитерации"
+            android:textColorHint="@color/black"
+            android:hint="Введите текст для транслитерации..."
             android:background="@drawable/edittext_background"
             android:importantForAccessibility="yes"
             android:padding="16dp" />
@@ -78,14 +78,20 @@
             android:minHeight="48dp"
             android:importantForAccessibility="yes"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="104dp"
-            android:layout_marginTop="12dp"
+            android:background="@color/white"
+            android:textColor="@color/black"
             android:text="Транслитерировать"
             android:importantForAccessibility="yes"/>
+
+    </LinearLayout>
 
         <TextView
             android:id="@+id/resultTextView"
@@ -93,10 +99,11 @@
             android:layout_height="135dp"
             android:layout_marginTop="37dp"
             android:scrollbars="vertical"
-            android:text="Текст на транслите будет отображён здесь"
+            android:text="Текст на транслите будет отображён здесь..."
             android:textIsSelectable="true"
             android:textSize="19dp"
-            android:importantForAccessibility="yes"/>
+            android:importantForAccessibility="yes"
+            android:textColor="@color/black"/>
 
 
     </LinearLayout>

@@ -1,6 +1,28 @@
 <resources>
     <string name="app_name" translatable="false">TGUI</string>
-    <string name="toolbar_description"
-
-        />
+    <string name="enter_text">Введите текст для транслитерации</string>
+    <string name="result">Результат:</string>
+    <string name="choose_option" translatable="false">Выберите режим:</string>
+    <string name="transliterate">Транслитерировать</string>
+    <string name="settings" translatable="false">Настройки</string>
+    <string name="help">Помощь</string>
+    <string name="exit">Выход</string>
+    <string name="save" translatable="false">Сохранить</string>
+    <string name="cancel" translatable="false">Отмена</string>
+    <string name="ok">OK</string>
+    <!-- Варианты транслитерации -->
+    <string name="cyrillic_to_arabic">Кириллица → Арабица</string>
+    <string name="cyrillic_to_latin" translatable="false">Кириллица → Латиница</string>
+    <!-- Языки интерфейса -->
+    <string-array name="languages">
+        <item>Русский</item>
+        <item>Английский</item>
+        <item>Чувашский</item>
+    </string-array>
+    <string name="no_text_error" translatable="false">Введите текст для транслитерации</string>
+    <string name="unknown_mode_error" translatable="false">Ошибка: неизвестный режим транслитерации</string>
+    <string name="settings_saved">Настройки сохранены</string>
+    <string name="help_message" translatable="false">Данное приложение было разработано для транслитерации чувашского текста с кириллической графики на арабскую и латинскую графику. В верхнее поле необходимо ввести или вставить текст, который вам хочется перенести на латинскую или арабскую графику. Под полем ввода находится меню выбора пары (кириллица - арабица, кириллица - латиница). Под меню выбора расположена кнопка, после нажатия на которую в поле ниже будет отображён перенесённый на нужную графику текст.</string><![CDATA[
+    />
+]]>
 </resources>

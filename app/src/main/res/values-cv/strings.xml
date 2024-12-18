@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="transliterate">Куçар</string>
+    <string name="help">Пулăшу</string>
+    <string name="ok">Йышăн</string>
+    <string name="settings_saved">Пулчĕ</string>
+    <string name="exit">Тух</string>
+    <string name="enter_text">Кунта текст çырăр</string>
+    <string name="result">Результат</string>
+    <string name="cyrillic_to_arabic">Кирилл - Арап</string>
+</resources>

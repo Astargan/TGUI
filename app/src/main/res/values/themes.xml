@@ -1,48 +1,11 @@
 <resources>
 
     <!-- Основная тема приложения с поддержкой Material Components -->
-    <style name="Theme.TGUI" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.TGUI" parent="Theme.Material3.DayNight.NoActionBar">
 
         <!-- Отключаем стандартный ActionBar, так как используем Toolbar -->
         <item name="windowActionBar">false</item>
 
-        <!-- Отключаем титульную строку (название активности) -->
-        <item name="windowNoTitle">true</item>
-
-        <!-- Определяем фон для всей активности -->
-        <item name="android:windowBackground">@android:color/white</item>
-
-        <!-- Цвет фона для Toolbar (если используется) -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-
-        <!-- Цвет фона для элементов управления в Toolbar -->
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-
-        <!-- Основной цвет для текста и иконок на экране -->
-        <item name="android:textColorPrimary">@color/textColorPrimary</item>
-
-        <!-- Цвет текста на кнопках и других интерактивных элементах -->
-        <item name="android:textColorSecondary">@color/textColorSecondary</item>
-
-        <!-- Используем Material Components для кнопок -->
-        <item name="buttonStyle">@style/Widget.MaterialComponents.Button</item>
-
-        <!-- Устанавливаем плавный переход цветов для тёмной темы -->
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
-
-    </style>
-
-    <!-- Определяем тёмную тему для поддержки тёмного режима -->
-    <style name="Theme.TGUI.Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowBackground">@android:color/black</item>
-        <item name="colorPrimary">@color/colorPrimaryDark</item>
-        <item name="colorPrimaryDark">@color/colorPrimary</item>
-        <item name="android:textColorPrimary">@color/white</item>
-        <item name="android:textColorSecondary">@color/grey</item>
-        <item name="buttonStyle">@style/Widget.MaterialComponents.Button</item>
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
     </style>
 
 </resources>
