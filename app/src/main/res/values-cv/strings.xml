@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings">Майлаштарма</string>
+    <string name="translate_button">Куçарма</string>
+    <string name="save_button">Çыртарма</string>
+    <string name="hint_text">Текста кунта çырса кертĕр</string>
+    <string name="result_hint">Куçарнă текст кунта пулать</string>
+    <string-array name="lang_spinner">
+        <item> Акăлчан </item>
+        <item> Чăваш </item>
+<!--        <item> Вырăс </item>-->
+    </string-array>
+    <string name="trans_cyr_to_ar">Кирил → Арап</string>
+    <string name="trans_cyr_to_lat">Кирил → Латин</string>
+    <string name="exit">Тухма</string>
+    <string name="set_saved">Пулчĕ</string>
+    <string-array name="traslate_spinner">
+        <item> Кирил → Арап </item> ,
+        <item> Кирил → Латин </item>
+    </string-array>
+
+</resources>

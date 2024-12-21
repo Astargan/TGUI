@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">TGUI preview</string>
+    <string name="save_button">Save</string>
+    <string name="settings">Settings</string>
+    <string name="translate_button">Translit</string>
+    <string name="hint_text">Add text here</string>
+    <string name="result_hint">The result will be here</string>
+        <string-array name="lang_spinner">
+            <item> English </item>
+            <item> Chuvash </item>
+<!--            <item> Russian </item>-->
+        </string-array>
+    <string name="trans_cyr_to_ar">Cyrillic → Arabic</string>
+    <string name="trans_cyr_to_lat">Cyrillic → Latin</string>
+    <string name="exit">Exit</string>
+    <string name="set_saved">Settings saved</string>
+        <string-array name="traslate_spinner">
+            <item> Cyrillic → Arabic </item> ,
+            <item> Cyrillic → Latin </item>
+        </string-array>
+    <string name="trans_mode_error">Invalid transliteration mode</string>
+
+
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    <string name="save_button">Сохранить</string>-->
+<!--    <string name="settings">Настройки</string>-->
+<!--    <string name="translate_button">Транслит</string>-->
+<!--    <string name="hint_text">Введите текст</string>-->
+<!--    <string name="trans_cyr_to_ar">Кириллица → Арабица</string>-->
+<!--    <string name="trans_cyr_to_lat">Кириллица → Латиница</string>-->
+<!--    <string name="exit">Выйти</string>-->
+<!--    <string name="trans_mode_error">Ошибка режима перевода</string>-->
+<!--    <string name="set_saved">Настройки сохранены</string>-->
+<!--    <string name="result_hint">Результат</string>-->
+<!--    <string-array name="lang_spinner">-->
+<!--        <item> Английский </item>-->
+<!--        <item> Чувашский </item>-->
+<!--&lt;!&ndash;        <item> Русский </item>&ndash;&gt;-->
+<!--    </string-array>-->
+</resources>

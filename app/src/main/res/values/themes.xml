@@ -3,8 +3,6 @@
     <!-- Основная тема -->
     <style name="Argadu" parent="Theme.Material3.Light.NoActionBar">
 
-        <!-- Цветовая палитра -->
-
         <item name="colorPrimary">@color/Primary</item>
         <item name="colorPrimaryVariant">@color/PrimaryVariant</item>
         <item name="colorOnPrimary">@color/OnPrimary</item>
@@ -17,9 +15,7 @@
     </style>
 
     <style name="CustomPopupBackground">
-        <item name="android:popupBackground">#000000</item> <!-- Чёрный фон меню -->
+        <item name="android:popupBackground">#000000</item>
     </style>
-
-
 
 </resources>
