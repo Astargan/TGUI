@@ -1,11 +1,25 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Основная тема приложения с поддержкой Material Components -->
-    <style name="Theme.TGUI" parent="Theme.Material3.DayNight.NoActionBar">
+    <!-- Основная тема -->
+    <style name="Argadu" parent="Theme.Material3.Light.NoActionBar">
 
-        <!-- Отключаем стандартный ActionBar, так как используем Toolbar -->
-        <item name="windowActionBar">false</item>
+        <!-- Цветовая палитра -->
+
+        <item name="colorPrimary">@color/Primary</item>
+        <item name="colorPrimaryVariant">@color/PrimaryVariant</item>
+        <item name="colorOnPrimary">@color/OnPrimary</item>
+        <item name="colorSecondary">@color/Secondary</item>
+
+<!--        текст -->
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
 
     </style>
+
+    <style name="CustomPopupBackground">
+        <item name="android:popupBackground">#000000</item> <!-- Чёрный фон меню -->
+    </style>
+
+
 
 </resources>

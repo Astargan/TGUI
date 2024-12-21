@@ -1,36 +1,26 @@
 package com.example.tgui
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.Spinner
-import android.widget.TextView
-import android.widget.Toast
-import android.widget.Button
-import android.widget.LinearLayout
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.runtime.*
-import kotlinx.coroutines.delay
 import android.os.Handler
 import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
-import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
-import android.content.res.Configuration
+import android.content.Intent
 import java.util.Locale
-
+import android.content.SharedPreferences
+import android.view.View
 
 
 class MainActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
         // Элементы интерфейса
         val inputText: EditText = findViewById(R.id.editText)
@@ -40,15 +30,14 @@ class MainActivity : AppCompatActivity() {
         val splashScreen: LinearLayout = findViewById(R.id.splashScreen)
         val mainContent: LinearLayout = findViewById(R.id.mainContent)
 
-
-        // Показать основной экран через 1 секунду
+        // Показать основной экран через 2 секунды
         Handler(Looper.getMainLooper()).postDelayed({
             splashScreen.visibility = LinearLayout.GONE // Скрыть приветственный экран
             mainContent.visibility = LinearLayout.VISIBLE // Показать основной экран
-        }, 2000)
+        }, 1000)
 
         // Настройка Spinner
-        val translationOptions = listOf("Кириллица → Арабица", "Кириллица → Латиница")
+        val translationOptions = resources.getStringArray (R.array.traslate_spinner)
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, translationOptions)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
@@ -59,116 +48,54 @@ class MainActivity : AppCompatActivity() {
             val selectedOption = spinner.selectedItem.toString()
 
             if (text.isEmpty()) {
-                Toast.makeText(this, "Введите текст для транслитерации", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.hint_text), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
+
             // Выбор метода транслитерации
             val result = when (selectedOption) {
-                "Кириллица → Арабица" -> transliterateToArabic(text)
-                "Кириллица → Латиница" -> transliterateToLatin(text)
-                else -> "Ошибка: неизвестный режим транслитерации"
+                getString(R.string.trans_cyr_to_ar) -> transliterateToArabic(text)
+                getString(R.string.trans_cyr_to_lat) -> transliterateToLatin(text)
+                else -> getString(R.string.trans_mode_error)
             }
 
             // Отображение результата
             outputText.text = result
         }
 
-        // Получаем Toolbar
+        // Настройка Toolbar
         val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)  // Устанавливаем его как ActionBar
-
+        setSupportActionBar(toolbar)
     }
-
 
     // Загружаем меню
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)  // Подключаем XML меню
+        menuInflater.inflate(R.menu.menu_main, menu) // Подключаем XML меню
         return true
-    }
-
-    private fun setLocale(languageCode: String) {
-        val locale = Locale(languageCode) // Создаем новый объект Locale
-        Locale.setDefault(locale) // Устанавливаем его как текущий
-        val config = Configuration() // Создаем новый объект Configuration
-        config.setLocale(locale) // Устанавливаем язык в конфигурации
-        resources.updateConfiguration(
-            config,
-            resources.displayMetrics
-        ) // Обновляем ресурсы приложения
-
     }
 
     // Обрабатываем выбранный пункт меню
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-
             R.id.action_settings -> {
-                val dialogView = layoutInflater.inflate(R.layout.dialog_settings, null)
-                val spinnerLanguage = dialogView.findViewById<Spinner>(R.id.spinner_language)
-                // Настраиваем спиннер языков
-                val languages = arrayOf("Русский", "Английский", "Чувашский")
-                val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, languages)
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                spinnerLanguage.adapter = adapter
-
-                val sharedPreferences = getSharedPreferences("Settings", MODE_PRIVATE)
-                val savedLanguage =
-                    sharedPreferences.getString("language", languages[0]) // По умолчанию "Русский"
-                spinnerLanguage.setSelection(languages.indexOf(savedLanguage))
-
-                // Показываем диалог
-                AlertDialog.Builder(this)
-                    .setTitle("Настройки")
-                    .setView(dialogView)
-                    .setPositiveButton("OK") { dialog, _ ->
-                        // Обработка сохранения настроек
-                        val selectedLanguage = spinnerLanguage.selectedItem.toString()
-                        sharedPreferences.edit().putString("language", selectedLanguage).apply()
-                        Toast.makeText(this, "Настройки сохранены", Toast.LENGTH_SHORT).show()
-                        dialog.dismiss()
-
-                        // Применение нового языка (зависит от реализации локализации)
-                        when (selectedLanguage) {
-                            "Русский" -> setLocale("ru")
-                            "Английский" -> setLocale("en")
-                            "Чувашский" -> setLocale("cv") // Например, код для чувашского
-                        }
-                        finish()
-                        startActivity(intent)
-
-
-                    }
-
-
-                    .setNegativeButton("Отмена") { dialog, _ -> dialog.dismiss() }
-                    .show()
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
                 true
             }
 
-//            R.id.action_help -> {
-//                AlertDialog.Builder(this)
-//                    .setTitle("Помощь") // Заголовок диалога
-//                    .setMessage("Данное приложение было разработано для транслитерации чувашского текста с кириллической графики на арабскую и латинскую графику. " +
-//                            "В верхнее поле необходимо ввести или вставить текст, который вам хочется перенести на латинскую или арабскую графику. " +
-//                            "Под полем ввода находится меню выбора пары (кириллица - арабица, кириллица - латиница). " +
-//                            "Под меню выбора расположена кнопка, после нажатия на которую в поле ниже будет отображён перенесённый на нужную графику текст. ") // Текст помощи
-//                    .setPositiveButton("OK") { dialog, _ ->
-//                        dialog.dismiss() // Закрываем диалог
-//                    }
-//                    .show()
-//                true
-//            }
-                R.id.action_exit -> {
-                    finish()
-                    true
-                }
-
-                else -> super.onOptionsItemSelected(item)
+            R.id.action_exit -> {
+                finish()
+                true
             }
 
+            else -> super.onOptionsItemSelected(item)
         }
 
+
     }
+    }
+
+
 
 
     // Пример функции транслитерации в арабицу

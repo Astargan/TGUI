@@ -2,22 +2,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_exit"
-        android:layout_gravity="left"
-        android:orderInCategory="2"
-        android:title="Выход"
-        app:showAsAction="always" />
-
-    <item
         android:id="@+id/action_settings"
-        android:title="Настройки"
-        app:showAsAction="ifRoom"
-        android:orderInCategory="3"
-        android:layout_gravity="end"/>
+        android:icon="@drawable/baseline_settings"
+        android:orderInCategory="100"
+        android:title="@string/settings"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_exit"
+        android:icon="@drawable/baseline_exit_to_app"
+        android:orderInCategory="101"
+        android:title="@string/exit"
+        app:showAsAction="never" />
 
 <!--    <item-->
 <!--        android:id="@/action_help"-->
-<!--        android:title="О приложении"-->
+<!--        android:title="About app"-->
 <!--        app:showAsAction="ifRoom"-->
 <!--        android:orderInCategory="3"/>-->
 
