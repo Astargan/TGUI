@@ -30,19 +30,18 @@ class MainActivity : AppCompatActivity() {
         val splashScreen: LinearLayout = findViewById(R.id.splashScreen)
         val mainContent: LinearLayout = findViewById(R.id.mainContent)
 
-        // Показать основной экран через 2 секунды
+        // Приветственный экран
         Handler(Looper.getMainLooper()).postDelayed({
             splashScreen.visibility = LinearLayout.GONE // Скрыть приветственный экран
             mainContent.visibility = LinearLayout.VISIBLE // Показать основной экран
         }, 1000)
 
-        // Настройка Spinner
+        // Спинер транслита
         val translationOptions = resources.getStringArray (R.array.traslate_spinner)
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, translationOptions)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 
-        // Обработка нажатия на кнопку
         translateButton.setOnClickListener {
             val text = inputText.text.toString()
             val selectedOption = spinner.selectedItem.toString()
@@ -58,23 +57,17 @@ class MainActivity : AppCompatActivity() {
                 getString(R.string.trans_cyr_to_lat) -> transliterateToLatin(text)
                 else -> getString(R.string.trans_mode_error)
             }
-
-            // Отображение результата
             outputText.text = result
         }
 
-        // Настройка Toolbar
+        //Тулбар
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
     }
-
-    // Загружаем меню
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu) // Подключаем XML меню
         return true
     }
-
-    // Обрабатываем выбранный пункт меню
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_settings -> {
@@ -94,11 +87,7 @@ class MainActivity : AppCompatActivity() {
 
     }
     }
-
-
-
-
-    // Пример функции транслитерации в арабицу
+    // Арабица
     private fun transliterateToArabic(input: String): String {
         val map = mapOf(
             ';' to '؛', ',' to '،', 'а' to 'ا', 'б' to 'پ', 'в' to 'ۋ', 'ӑ' to 'أ', 'ă' to 'أ',
@@ -118,7 +107,7 @@ class MainActivity : AppCompatActivity() {
         return input.map { map[it] ?: it }.joinToString("")
     }
 
-    // Пример функции транслитерации в латиницу
+    // Латиница Аргаду
     private fun transliterateToLatin(input: String): String {
         val map = mapOf(
             ',' to ",", 'а' to "a", 'б' to "p", 'в' to "v", 'г' to "k", 'д' to "t",
