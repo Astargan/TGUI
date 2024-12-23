@@ -1,43 +1,69 @@
 package com.example.tgui
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.widget.*
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Handler
 import android.os.Looper
+import android.text.method.ScrollingMovementMethod
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import android.content.Intent
-import java.util.Locale
-import android.content.SharedPreferences
-import android.view.View
+import androidx.core.content.res.ResourcesCompat
+import android.widget.ImageButton
+import android.widget.EditText
+import android.widget.Button
+import android.text.Editable
+import android.text.TextWatcher
+
 
 
 class MainActivity : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         // Элементы интерфейса
         val inputText: EditText = findViewById(R.id.editText)
+
         val spinner: Spinner = findViewById(R.id.spinner)
         val translateButton: Button = findViewById(R.id.button)
         val outputText: TextView = findViewById(R.id.resultTextView)
         val splashScreen: LinearLayout = findViewById(R.id.splashScreen)
         val mainContent: LinearLayout = findViewById(R.id.mainContent)
+//кнопка очистки текста в обоих полях
+        val editText: EditText = findViewById(R.id.editText)
+        val textView: TextView = findViewById(R.id.resultTextView)
+        val clearButton: ImageButton = findViewById(R.id.clear_text)
+        clearButton.setOnClickListener {
+            editText.text.clear()
+            textView.text = ""
+        }
+
+        val resultTextView: TextView = findViewById(R.id.resultTextView)
+        val buttonCopy: ImageButton = findViewById(R.id.copy_result)
+            buttonCopy.setOnClickListener {
+                val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val clip = ClipData.newPlainText("label", textView.text)
+                clipboard.setPrimaryClip(clip)
+                Toast.makeText(this, getString(R.string.text_copied), Toast.LENGTH_SHORT).show()
+
+        }
 
         // Приветственный экран
-        Handler(Looper.getMainLooper()).postDelayed({
+        splashScreen.animate().alpha(0f).setDuration(3000).withEndAction {
             splashScreen.visibility = LinearLayout.GONE // Скрыть приветственный экран
             mainContent.visibility = LinearLayout.VISIBLE // Показать основной экран
-        }, 1000)
+
+        }
 
         // Спинер транслита
-        val translationOptions = resources.getStringArray (R.array.traslate_spinner)
+        val translationOptions = resources.getStringArray(R.array.traslate_spinner)
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, translationOptions)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
@@ -50,7 +76,6 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, getString(R.string.hint_text), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
             // Выбор метода транслитерации
             val result = when (selectedOption) {
                 getString(R.string.trans_cyr_to_ar) -> transliterateToArabic(text)
@@ -60,14 +85,37 @@ class MainActivity : AppCompatActivity() {
             outputText.text = result
         }
 
+        // Перевод в реальном времени
+        inputText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val text = s.toString()
+                if (text.isNotEmpty()) {
+                    val selectedOption = spinner.selectedItem.toString()
+                    val result = when (selectedOption) {
+                        getString(R.string.trans_cyr_to_ar) -> transliterateToArabic(text)
+                        getString(R.string.trans_cyr_to_lat) -> transliterateToLatin(text)
+                        else -> getString(R.string.trans_mode_error)
+                    }
+                    outputText.text = result
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
+
         //Тулбар
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu) // Подключаем XML меню
         return true
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_settings -> {
@@ -84,9 +132,9 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
 
+    }
+}
 
-    }
-    }
     // Арабица
     private fun transliterateToArabic(input: String): String {
         val map = mapOf(

@@ -18,4 +18,31 @@
         <item name="android:popupBackground">#000000</item>
     </style>
 
+    <style name="Widget.App.Toolbar" parent="Widget.Material3.Toolbar">
+        <!-- Customize toolbar appearance -->
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Toolbar</item>
+        <item name="titleTextAppearance">@style/TextAppearance.App.Toolbar.Title</item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.App.Toolbar.Subtitle</item>
+        <item name="contentInsetStartWithNavigation">0dp</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Toolbar" parent="ThemeOverlay.Material3.ActionBar">
+        <item name="colorPrimary">?attr/colorSurface</item>
+        <item name="colorOnPrimary">?attr/colorOnSurface</item>
+        <item name="android:textColorPrimary">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.App.Toolbar.Title" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.0125</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="TextAppearance.App.Toolbar.Subtitle" parent="TextAppearance.Material3.TitleSmall">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
+    </style>
+
 </resources>

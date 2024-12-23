@@ -1,24 +1,46 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/action_settings"
-        android:icon="@drawable/baseline_settings"
-        android:orderInCategory="100"
-        android:title="@string/settings"
-        app:showAsAction="never" />
+
+    <!-- Primary actions group -->
+    <group android:id="@+id/group_primary_actions">
+        <item
+                android:id="@+id/action_settings"
+                android:icon="@drawable/baseline_settings"
+                android:orderInCategory="1"
+            android:iconTint="@color/AntiqueWhite"
+                android:title="@string/settings"
+                app:showAsAction="ifRoom" />
+    </group>
+
+    <group android:id="@+id/group_secondary_actions"
+        android:checkableBehavior="none">
+
+<!--    <item-->
+<!--        android:id="@/action_about"-->
+<!--        android:title="About app"-->
+<!--        android:icon="@drawable/help"-->
+<!--        app:showAsAction="never"-->
+<!--        android:orderInCategory="2"/>-->
+
+    </group>
+
+    <!-- System actions group -->
+    <group android:id="@+id/group_system_actions">
+
     <item
         android:id="@+id/action_exit"
         android:icon="@drawable/baseline_exit_to_app"
-        android:orderInCategory="101"
+        android:orderInCategory="100"
+        android:iconTint="@color/AntiqueWhite"
         android:title="@string/exit"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 
-<!--    <item-->
-<!--        android:id="@/action_help"-->
-<!--        android:title="About app"-->
-<!--        app:showAsAction="ifRoom"-->
-<!--        android:orderInCategory="3"/>-->
+    </group>
+
+
+
+
 
 
 </menu>

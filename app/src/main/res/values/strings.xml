@@ -6,6 +6,7 @@
     <string name="translate_button">Translit</string>
     <string name="hint_text">Add text here</string>
     <string name="result_hint">The result will be here</string>
+    <string name="text_copied">Сopied</string>
         <string-array name="lang_spinner">
             <item> English </item>
             <item> Chuvash </item>
@@ -20,6 +21,7 @@
             <item> Cyrillic → Latin </item>
         </string-array>
     <string name="trans_mode_error">Invalid transliteration mode</string>
-
+    <string name="toolbar_description">Application toolbar</string>
+    <string name="nav_menu_description">Open navigation menu</string>
 
 </resources>

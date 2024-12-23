@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/Primary"
+        android:background="@color/IndianRed"
         android:elevation="4dp"
         app:showAsAction="ifRoom"
         app:menu="@menu/menu_main"/>
@@ -21,92 +21,149 @@
         android:id="@+id/splashScreen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/Secondary"
+        android:background="@color/White"
         android:gravity="center"
         android:orientation="vertical"
         android:visibility="visible">
+
+        <!-- Лого приложения -->
+        <ImageView
+            android:id="@+id/appLogo"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:backgroundTint="@color/DarkRed"
+            android:src="@mipmap/ic_launcher"
+            android:layout_marginBottom="20dp"/>
+
 
         <TextView
             android:id="@+id/splashText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/argadu"
             android:gravity="center"
             android:text="translitgui"
-            android:textColor="@color/Primary"
-            android:textSize="45sp"
-            android:fontFamily="@font/argadu"
+            android:textColor="@color/IndianRed"
+            android:textSize="40sp"
             android:textStyle="bold" />
 
-        <!-- Прогресс-бар -->
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:layout_marginTop="30dp"
-            android:visibility="visible"/>
+        <!-- Прогресс-бар / пока что отключил-->
+<!--        <ProgressBar-->
+<!--            android:id="@+id/progressBar"-->
+<!--            style="?android:attr/progressBarStyleHorizontal"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:indeterminate="true"-->
+<!--            android:visibility="visible" />-->
     </LinearLayout>
 
     <!-- Основной экран -->
-    <LinearLayout
-        android:id="@+id/mainContent"
+<!--  прокрутка основного экрана, чтобы текствовое поле не загораживало вывод  -->
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/Background_main"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:visibility="gone">
+        android:fillViewport="true">
 
-        <!-- Поле для ввода текста -->
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="19sp"
-            android:textColorHint="@color/textSecondary"
-            android:hint="@string/hint_text"
-            android:background="@drawable/edittext_background"
-            android:importantForAccessibility="yes"
-            android:padding="16dp"
-            android:layout_marginTop="200dp"/>
-
-        <!-- Спиннер для выбора -->
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="227dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="32dp"
-            android:importantForAccessibility="yes"
-            android:spinnerMode="dialog"/>
-
-        <!-- Кнопка для перевода -->
         <LinearLayout
+            android:id="@+id/mainContent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="32dp">
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?attr/colorSurface"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:visibility="visible">
+
+            <!-- Поле для ввода текста -->
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="200dp"
+                    android:background="@drawable/edittext_background"
+                    android:hint="@string/hint_text"
+                    android:importantForAccessibility="yes"
+                    android:maxHeight="200dp"
+                    android:padding="16dp"
+                    android:textColorHint="@color/textSecondary"
+                    android:textSize="19sp" />
+
+                <ImageButton
+                    android:id="@+id/clear_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="325dp"
+                    android:layout_marginTop="190dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:srcCompat="@drawable/baseline_cancel" />
+
+            </FrameLayout>
+
+
+            <!-- Спиннер для выбора -->
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="374dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="32dp"
+                android:importantForAccessibility="yes"
+                android:spinnerMode="dialog" />
+
+            <!-- Кнопка для перевода -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/Secondary"
-                android:textColor="@color/textPrimary"
-                android:text="@string/translate_button"
-                android:importantForAccessibility="yes"/>
+                android:layout_marginTop="32dp"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/IndianRed"
+                    android:importantForAccessibility="yes"
+                    android:text="@string/translate_button"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+
+            <!-- Результат перевода -->
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/resultTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="135dp"
+                    android:layout_marginTop="60dp"
+                    android:scrollbars="vertical"
+                    android:text="@string/result_hint"
+                    android:textColor="@color/textSecondary"
+                    android:textIsSelectable="true"
+                    android:textSize="19sp" />
+
+                <ImageButton
+                    android:id="@+id/copy_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="325dp"
+                    android:layout_marginTop="35dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:srcCompat="@drawable/baseline_content_copy" />
+
+            </FrameLayout>
+
+
         </LinearLayout>
-
-        <!-- Результат перевода -->
-        <TextView
-            android:id="@+id/resultTextView"
-            android:layout_width="match_parent"
-            android:layout_height="135dp"
-            android:layout_marginTop="37dp"
-            android:scrollbars="vertical"
-            android:text="@string/result_hint"
-            android:textIsSelectable="true"
-            android:textSize="19sp"
-            android:textColor="@color/textSecondary"/>
-
-    </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

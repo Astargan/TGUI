@@ -1,18 +1,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@color/Background_main">
+    android:padding="@dimen/screen_padding"
+    android:background="?attr/colorSurface"
+    android:clipToPadding="false">
 
     <!-- Заголовок -->
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/settings_title"
+        android:textAppearance="?attr/textAppearanceHeadline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/settings"
         android:textSize="18sp"
         android:layout_marginBottom="16dp"
-        android:fontFamily="sans-serif-medium" />
+        android:accessibilityHeading="true"
+        tools:targetApi="p" />
 
     <!-- Спиннер для выбора языка -->
     <Spinner
@@ -31,7 +36,7 @@
         android:layout_height="wrap_content"
         android:text="@string/save_button"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/Primary"
+        android:backgroundTint="@color/IndianRed"
         android:textColor="@android:color/white" />
 
 </LinearLayout>
