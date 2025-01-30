@@ -8,9 +8,10 @@
                 android:id="@+id/action_settings"
                 android:icon="@drawable/baseline_settings"
                 android:orderInCategory="1"
-            android:iconTint="@color/AntiqueWhite"
+                android:iconTint="@color/AntiqueWhite"
                 android:title="@string/settings"
-                app:showAsAction="ifRoom" />
+                app:showAsAction="ifRoom"
+                app:title="TGUI preview 0.1.1a"/>
     </group>
 
     <group android:id="@+id/group_secondary_actions"

@@ -17,7 +17,7 @@
         android:textSize="18sp"
         android:layout_marginBottom="16dp"
         android:accessibilityHeading="true"
-        tools:targetApi="p" />
+        tools:targetApi="31" />
 
     <!-- Спиннер для выбора языка -->
     <Spinner
@@ -36,6 +36,7 @@
         android:layout_height="wrap_content"
         android:text="@string/save_button"
         android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_button"
         android:backgroundTint="@color/IndianRed"
         android:textColor="@android:color/white" />
 

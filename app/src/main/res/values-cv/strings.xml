@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="settings">Майлаштару</string>
+    <string name="settings">Майлаштар</string>
     <string name="translate_button">Куçар</string>
     <string name="save_button">Çыртар</string>
-    <string name="hint_text">Текста кунта çырса кертĕр</string>
+    <string name="hint_text">Текста кунта çырса кĕртĕр</string>
     <string name="result_hint">Куçарнă текст кунта пулать</string>
     <string name="text_copied">Копиленĕ</string>
     <string-array name="lang_spinner">
         <item> Акăлчан </item>
         <item> Чăваш </item>
-<!--        <item> Вырăс </item>-->
+        <item> Вырăс </item>
     </string-array>
     <string name="trans_cyr_to_ar">Кирил → Арап</string>
     <string name="trans_cyr_to_lat">Кирил → Латин</string>
@@ -19,5 +19,6 @@
         <item> Кирил → Арап </item> ,
         <item> Кирил → Латин </item>
     </string-array>
+    <string name="trans_mode_error">Куçару йăнăшĕ</string>
 
 </resources>

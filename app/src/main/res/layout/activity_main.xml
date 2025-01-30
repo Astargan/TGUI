@@ -10,11 +10,11 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/IndianRed"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
         android:elevation="4dp"
-        app:showAsAction="ifRoom"
-        app:menu="@menu/menu_main"/>
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="TGUI preview 0.1.1a" />
 
     <!-- Приветственный экран -->
     <LinearLayout
@@ -47,15 +47,6 @@
             android:textSize="40sp"
             android:textStyle="bold" />
 
-        <!-- Прогресс-бар / пока что отключил-->
-<!--        <ProgressBar-->
-<!--            android:id="@+id/progressBar"-->
-<!--            style="?android:attr/progressBarStyleHorizontal"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="30dp"-->
-<!--            android:indeterminate="true"-->
-<!--            android:visibility="visible" />-->
     </LinearLayout>
 
     <!-- Основной экран -->
@@ -72,7 +63,7 @@
             android:background="?attr/colorSurface"
             android:orientation="vertical"
             android:padding="16dp"
-            android:visibility="visible">
+            android:visibility="invisible">
 
             <!-- Поле для ввода текста -->
 
@@ -125,15 +116,14 @@
                     android:id="@+id/button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/IndianRed"
+                    android:background="@drawable/rounded_button"
                     android:importantForAccessibility="yes"
                     android:text="@string/translate_button"
-                    android:textColor="@color/textPrimary"
+                    android:textColor="@color/white"
                     android:textSize="13dp" />
 
             </LinearLayout>
 
-            <!-- Результат перевода -->
 
             <FrameLayout
                 android:layout_width="match_parent"
